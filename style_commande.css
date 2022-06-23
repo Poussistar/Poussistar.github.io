@@ -1,0 +1,50 @@
+
+
+.pasCher{
+    text-align: center;
+    border: 5px solid blue;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 10px ;
+    position: absolute;
+    left: 0px;
+}
+
+.cher{
+    text-align: center;
+    border: 5px solid blue;
+    padding: 50px;
+    margin-top: 20px;
+    border-radius: 10px ;
+    position: absolute;
+    right: 0px;
+    
+
+}
+
+.euros{
+    text-align: center;
+}
+
+h1{
+    text-align: center;
+}
+
+body{
+    background-color: #137C8B ;
+   
+}
+
+
+.commandez{
+    background-color: blue;
+}
+
+.commandez:hover{
+    background-color: darkblue;
+        color: white;
+}
+
+
+
+
