@@ -2,57 +2,301 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style_index.css">
-
-    <title>oui ou non ?</title>
+    <title>Parc d'Attractions Fantaisie</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <div class="header">
+    <!-- Header -->
+    <header>
+        <h1>Bienvenue au Parc heroic land</h1>
         <nav>
-            <ul class="menu">
-                <li><a href="#">acceuil</a></li>
-                <li><a href="commande.html">commander</a></li>
-                <li><a href="#">contacter-nous</a></li>
-                <li><a href="#">evaluer-nous</a></li>
-                <li><a href="#">aide</a></li>
-        
-        
-        
-            </ul>
-           
+            <a href="#accueil">Accueil</a>
+            <a href="#utilisateur">Mon Compte</a>
+            <a href="#carte">Ma Carte</a>
         </nav>
+    </header>
+
+    <!-- Section d'accueil -->
+    <section id="accueil">
+        <div class="hero">
+            <h2>Un monde magique vous attend !</h2>
+            <p>jetter des dechet dans la super poublle pour gagner de la pates !</p>
         </div>
-    <h1>acceuil</h1>
-    <p>Votre enfant a toujours voulu avoir de l'argent de poche ? Ce site est fait pour vous !</p><br>
-    <p>Ici vous pourrez donner à votre enfant de l'argent de poche contre des requêtes !</p><br>
-    <p>Vous devez déja renplir ce formulaire ci-dessous, puis choisir votre abonnement !</p>
-    <form >
-        <div class="enfant">
-        <input class="bordure" type="text" placeholder="nom de votre enfant"><br><br>
-        <input class="bordure"type="text " placeholder="prénom de votre enfant"><br><br>
-        <input class="bordure"type="number" placeholder="age" max="18" min="8">
-        <input class="bordure"type="radio" id="humain">
-        <label for="humain">garcon</label>
-        <input type="radio" id="femme">
-        <label for="femme">fille</label>
+    </section>
 
+    <!-- Section Utilisateur -->
+    <section id="utilisateur">
+        <h2>Profil Utilisateur</h2>
+        <div class="user-profile">
+            <img src="avatar.png" alt="Avatar de l'utilisateur">
+            <p>Nom : RubRub</p>
+            <p>Niveau : admin</p>
         </div>
-        <div class="voulez_vous">
-        <p>voulez vous ?</p>
-        <input type="radio" id="oui">
-        <label for="oui">oui</label>
-        <input type="radio" id="non">
-        <label for="non">non</label>
-       <textarea cols="50" rows="10" placeholder="si non,pourquoi ?"></textarea>
-        </div>
+    </section>
 
-        <h2 class="passerALaCommande"><a href="commande.html">valider et payer</a></h2>
-
-         
-
+    <!-- Section Carte -->
+    <section id="carte">
+        <h2>Ma Carte</h2>
         
-    </form>
+            
+            
+            <div class="card">
+                <p>Carte de fidélité</p>
+                <p>Points : <span id="points">0</span></p>
+                <div id="spinner" class="spinner"></div>
+                <div id="cardImageContainer" class="card-image-container">
+                    <img id="cardImage" src="carte.webp" alt="Carte de fidélité" class="card-image">
+                </div>
+                
+                <button onclick="biper()">Biper la carte</button>
+                <button onclick="resetPoints()">Réinitialiser les points</button>
+
+                <div id="rewardMessage" class="reward-message" style="display: none;">
+                    Félicitations ! Vous avez gagné 5 cm³ de pâte. Rendez-vous au magasin pour les récupérer !
+                </div>
+                
+            
+            
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Parc Fantaisie. Tous droits réservés.</p>
+    </footer>
 </body>
 </html>
+
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f0f8ff;
+    color: #333;
+}
+
+header {
+    width: 100%;
+    background-color: #4a90e2;
+    padding: 1em;
+    text-align: center;
+    color: white;
+}
+
+header h1 {
+    margin-bottom: 0.5em;
+}
+
+nav a {
+    margin: 0 1em;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #ffd700;
+}
+
+.hero {
+    text-align: center;
+    padding: 2em;
+    background-color: #e1f5fe;
+    width: 100%;
+}
+
+#utilisateur, #carte {
+    margin: 2em 0;
+    padding: 2em;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 80%;
+    text-align: center;
+}
+
+.user-profile img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.card {
+    background-color: #e6e6e6;
+    padding: 1em;
+    border-radius: 10px;
+    display: inline-block;
+    margin-top: 1em;
+}
+
+button {
+    margin-top: 1em;
+    padding: 0.5em 1em;
+    border: none;
+    background-color: #4a90e2;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #357abd;
+}
+
+footer {
+    margin-top: 2em;
+    padding: 1em;
+    width: 100%;
+    text-align: center;
+    background-color: #4a90e2;
+    color: white;
+}
+
+/* Spinner (cercle qui tourne) */
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-top: 4px solid #4a90e2;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+    display: none; /* Caché par défaut */
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+    
+/* Conteneur de l'image de la carte */
+.card-image-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 1em;
+    overflow: hidden;
+    height: 0; /* Commence invisible */
+    transition: height 0.5s ease-out;
+}
+
+/* Image de la carte */
+.card-image {
+    width: 200px; /* Ajustez selon la taille souhaitée */
+    opacity: 0;
+    transform: translateY(100px);
+    transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+}
+
+/* Classe active pour animer l'apparition de la carte */
+.card-image-container.active {
+    height: auto;
+}
+
+.card-image-container.active .card-image {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Style pour le message de récompense */
+.reward-message {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #dff0d8; /* Vert clair */
+    color: #3c763d; /* Vert foncé pour le texte */
+    border: 1px solid #d6e9c6;
+    border-radius: 5px;
+    font-weight: bold;
+    display: none; /* Caché par défaut */
+}
+
+
+</style>
+
+
+
+
+<script>
+
+
+function biper() {
+    const pointsDisplay = document.getElementById("points");
+    let points = parseInt(pointsDisplay.innerText);
+    points += 10; // Ajoute des points fictifs
+    pointsDisplay.innerText = points;
+
+    // Animation de biper
+    pointsDisplay.style.color = "green";
+    setTimeout(() => {
+        pointsDisplay.style.color = "#333";
+    }, 500);
+}
+
+function resetPoints() {
+    const pointsDisplay = document.getElementById("points");
+    pointsDisplay.innerText = "0"; // Réinitialise les points à zéro
+
+    // Animation pour indiquer la réinitialisation
+    pointsDisplay.style.color = "red";
+    setTimeout(() => {
+        pointsDisplay.style.color = "#333";
+    }, 500);
+}
+
+
+
+
+function biper() {
+    const pointsDisplay = document.getElementById("points");
+    const spinner = document.getElementById("spinner");
+    const cardImageContainer = document.getElementById("cardImageContainer");
+    const rewardMessage = document.getElementById("rewardMessage");
+
+    spinner.style.display = "block"; // Affiche le spinner
+
+    // Simule un délai de chargement
+    setTimeout(() => {
+        let points = parseInt(pointsDisplay.innerText);
+        points += 10; // Ajoute des points fictifs
+        pointsDisplay.innerText = points;
+
+        spinner.style.display = "none"; // Cache le spinner après ajout des points
+
+        // Animation de biper
+        pointsDisplay.style.color = "green";
+        setTimeout(() => {
+            pointsDisplay.style.color = "#333";
+        }, 500);
+
+        // Affiche l'image de la carte avec une animation
+        cardImageContainer.classList.add("active");
+
+        // Vérifie si les points atteignent 80 ou plus
+        if (points >= 80) {
+            rewardMessage.style.display = "block"; // Affiche le message de récompense
+        }
+    }, 2000); // Délai de 2 secondes avant d'ajouter les points
+}
+</script>
+
+
+
+
+
+<!-- 
+
+ -->
